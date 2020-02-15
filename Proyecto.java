@@ -84,3 +84,54 @@ public class Proyecto extends JFrame{
     	v.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	
      	}
+
+	private class ManejadorEventos implements ActionListener{
+    	public void actionPerformed(ActionEvent evento){
+    		//identificamos el origen del evento
+    		if	(evento.getSource()==Calcular && Redondeo.isSelected()){
+    			//Error Absoluto
+    			double resta,op,red,op2,op3;
+    			double num=Double.parseDouble(ValAb.getText());
+    			double num2=Double.parseDouble(ValRe.getText());
+    			resta=(num-num2);
+    			String dato = String.valueOf(resta);
+    			ReEA.getText();
+    			ReEA.setText(dato);
+    			
+    			//Error Aproximado
+    			op=((num-num2)/num);
+    			String dt=String.valueOf(op);
+    			ReER.getText();
+    			ReER.setText(dt);
+    			
+    			
+    			//Truncamiento
+    			if (Truncamiento.isSelected()){
+    				//Redondeo de Resultado de Error Absoluto
+    				red=Math.round(resta);
+    				op2=num-red;
+    				String co=String.valueOf(op2);
+    				TruER.getText();
+    				TruER.setText(co);
+    				
+    				op3=((op2)/num);
+    				String co2=String.valueOf(op3);
+    				TruEA.getText();
+    				TruEA.setText(co2);
+    			}
+    				
+    		}
+    		if	(evento.getSource()==Cancelar){
+    			ValAb.setText("");
+				ValRe.setText("");
+				ReEA.setText("");
+				ReER.setText("");
+				TruER.setText("");
+				TruEA.setText("");
+    		}
+    		if (evento.getSource()==Salir){
+    			exit(0);
+    		}
+    	}//fin del metodo actionPerformed
+    	}
+}
