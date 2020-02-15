@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import static java.lang.System.exit;
 public class Proyecto extends JFrame{
-	//DECLARACIÓN DE MIEMBROS DE CLASE O ATRIBUTOS
+	//DECLARACIÃ“N DE MIEMBROS DE CLASE O ATRIBUTOS
 	//variables con ambito de clase
 		JLabel ValorAbs, ValorRel, RER, REA, TER,TEA;
 		JTextField ValAb, ValRe, ReER, ReEA, TruER, TruEA;
@@ -37,7 +37,8 @@ public class Proyecto extends JFrame{
     	Cancelar.addActionListener(manejador);//le indicamos el manejador de eventos
     	Salir = new JButton("Salir");
     	Salir.addActionListener(manejador);//le indicamos el manejador de eventos
-
+	Redondeo=new JCheckBox("Redondeo");
+    	Truncamiento=new JCheckBox("Truncamiento");
 
 //Panel Datos
     	JPanel Datos = new JPanel();
@@ -49,3 +50,37 @@ public class Proyecto extends JFrame{
     	Datos.add(ValRe);
     	Datos.add(REA);
     	Datos.add(ReEA);
+	Datos.add(RER);
+    	Datos.add(ReER);
+    	Datos.add(TER);
+    	Datos.add(TruER);
+    	Datos.add(TEA);
+    	Datos.add(TruEA);
+    	
+    	//Panel Botones
+    	JPanel Botones = new JPanel();
+        Botones.setLayout(new FlowLayout());
+    	Botones.add(Calcular);
+        Botones.add(Cancelar);
+    	Botones.add(Salir);
+    	
+    	//Panel Eleccion
+    	JPanel Elec=new JPanel();
+    	GridLayout g2 = new GridLayout(3,0,0,10);
+        Elec.setLayout(g2);
+    	Elec.add(Redondeo);
+    	Elec.add(Truncamiento);
+    	
+    	
+    	//Panel Contenedor
+    	Container cp=getContentPane();
+    	cp.add(Datos, BorderLayout.WEST);
+    	cp.add(Elec, BorderLayout.CENTER);
+        cp.add(Botones, BorderLayout.SOUTH);
+    }
+    	public static void main(String args[]){
+    	Proyecto v=new Proyecto();
+    	v.setVisible(true);
+    	v.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	
+     	}
